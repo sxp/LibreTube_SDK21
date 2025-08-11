@@ -348,7 +348,7 @@ class DownloadService : LifecycleService() {
 
                 return@withContext handleResponse(item, response)
             } catch (e: IOException) {
-                Log.e(this::javaClass.name, e.printStackTrace().toString())
+                Log.e(DownloadService::class.java.name, e.stackTraceToString())
 
                 val message = getString(R.string.downloadfailed)
                 _downloadFlow.emit(item.id to DownloadStatus.Error(message))
